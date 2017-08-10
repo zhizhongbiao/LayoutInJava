@@ -1,20 +1,40 @@
 package cn.com.tianyudg.layoutinjava;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import cn.com.tianyudg.layoutinjava.helper.basic.ViewHelper;
+import cn.com.tianyudg.layoutinjava.helper.view.TextViewHelper;
+import cn.com.tianyudg.layoutinjava.helper.viewgroup.LinearLayoutHelper;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ViewGroup contentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        contentView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
+        setContentView(contentView);
 
-        test();
+//        test();
+
+        LinearLayout ll = LinearLayoutHelper.getLinearLayout(this, Gravity.CENTER, LinearLayout.VERTICAL);
+
+        ll.addView(TextViewHelper.getTextView(this,30,30,"jjjjj",24f, Color.RED,false,Gravity.CENTER
+                ,Gravity.CENTER,new int[]{0,0,0,0},new int[]{0,0,0,0}, View.VISIBLE, ViewHelper.NO_BG_COLOR,ViewHelper.NO_BG_RES,ViewHelper.NO_BG_DRAWABLE));
+        contentView.addView(ll);
+
     }
 
     private void test() {
@@ -37,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         text_Name.setLayoutParams(text_Name_Params);
         text_Name.setText("Mr.Zdy");
         text_Name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        text_Name.setId(2);
+//        text_Name.setId(2);
 
 
         TextView text_Email = new TextView(this);

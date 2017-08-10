@@ -32,8 +32,8 @@ public class ViewHelper {
     public static final int NO_LAYOUT_GRAVITY = -997;
 
     public static final int NO_WEIGHT = -996;
+    public static final int DEFAULT_VISIABLE = View.VISIBLE;
     public static final int DEFAULT_WIDTH = ViewGroup.LayoutParams.MATCH_PARENT;
-
     public static final int DEFAULT_HEIGHT = ViewGroup.LayoutParams.WRAP_CONTENT;
     public static final int[] DEFAULT_PADDING = {0, 0, 0, 0};
     public static final int[] DEFAULT_MARGINS = DEFAULT_PADDING;

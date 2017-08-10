@@ -21,10 +21,10 @@ public class LinearLayoutHelper {
 
 
     public static LinearLayout getLinearLayout(Context context
-            , int llGravity, int orientation) {
+            , int gravity, int orientation) {
 
         return getLinearLayout(context
-                , llGravity, orientation, ViewHelper.NO_LAYOUT_GRAVITY
+                , gravity, orientation, ViewHelper.NO_LAYOUT_GRAVITY
                 , ViewHelper.DEFAULT_MARGINS, ViewHelper.DEFAULT_PADDING
                 , NO_WEIGHT_SUM);
     }
