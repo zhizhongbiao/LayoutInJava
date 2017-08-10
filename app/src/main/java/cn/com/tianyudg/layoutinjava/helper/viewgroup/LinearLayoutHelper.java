@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import cn.com.tianyudg.layoutinjava.exception.WrongParameterException;
 import cn.com.tianyudg.layoutinjava.helper.basic.ViewHelper;
 
 /**
@@ -19,29 +20,38 @@ public class LinearLayoutHelper {
     public static final int NO_WEIGHT_SUM = -10000;
 
 
-
     public static LinearLayout getLinearLayout(Context context
             , int llGravity, int orientation) {
 
         return getLinearLayout(context
-                , llGravity, orientation
+                , llGravity, orientation, ViewHelper.NO_LAYOUT_GRAVITY
+                , ViewHelper.DEFAULT_MARGINS, ViewHelper.DEFAULT_PADDING
+                , NO_WEIGHT_SUM);
+    }
+
+    public static LinearLayout getLinearLayout(Context context
+            , int llGravity, int orientation, int layoutGravity) {
+
+        return getLinearLayout(context
+                , llGravity, orientation, layoutGravity
                 , ViewHelper.DEFAULT_MARGINS, ViewHelper.DEFAULT_PADDING
                 , NO_WEIGHT_SUM);
     }
 
 
     public static LinearLayout getLinearLayout(Context context
-            , int llGravity, int orientation
+            , int llGravity, int orientation, int layoutGravity
             , int[] margins, int[] paddings
             , float weightSum) {
 
         return getLinearLayout(context
-                , ViewHelper.DEFAULT_WIDTH,ViewHelper.DEFAULT_HEIGHT
-                , llGravity, orientation
+                , ViewHelper.DEFAULT_WIDTH, ViewHelper.DEFAULT_HEIGHT
+                , llGravity, orientation, layoutGravity
                 , margins, paddings
                 , null, 0, -1
                 , View.VISIBLE
-                , weightSum);
+                , weightSum
+                , ViewHelper.NO_BG_COLOR, ViewHelper.NO_BG_RES, ViewHelper.NO_BG_DRAWABLE);
     }
 
 
@@ -61,23 +71,20 @@ public class LinearLayoutHelper {
      */
     public static LinearLayout getLinearLayout(Context context
             , int llWidth, int llHeight
-            , int llGravity, int orientation
+            , int llGravity, int orientation, int layoutGravity
             , int[] margins, int[] paddings
             , Drawable dividerDrawabl, int dividerPadding, int showDivider
             , int visibale
-            , float weightSum) {
+            , float weightSum
+            , int bgColor, int bgRes, Drawable bgDrawable) {
 
         if (paddings == null || paddings.length < 4) {
-            throw new RuntimeException("You should give a nonull int[]@paddings whose length is 4 at least");
+            throw new WrongParameterException("You should give a nonull int[]@paddings whose length is 4 at least");
 
         }
 
         LinearLayout ll = new LinearLayout(context);
-//        ViewGroup.MarginLayoutParams mlp = new ViewGroup.MarginLayoutParams(llWidth, llHeight);
-//        mlp.setMargins(margins[0], margins[1], margins[2], margins[3]);
-//        ll.setLayoutParams(mlp);
-
-//        ll.setLayoutParams(ViewHelper.getMarginLayoutParams(ll.getParent(),llWidth, llHeight,margins));
+        ll.setLayoutParams(ViewHelper.getMarginLayoutParams(ll.getParent(), ll, llWidth, llHeight, margins, layoutGravity));
         ll.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
         ll.setOrientation(orientation);
         ll.setGravity(llGravity);
@@ -87,11 +94,21 @@ public class LinearLayoutHelper {
             ll.setShowDividers(showDivider);
         }
 
-        ll.setVisibility(visibale);
+        if (bgColor != ViewHelper.NO_BG_COLOR) {
+            ll.setBackgroundColor(bgColor);
+        }
+        if (bgDrawable != ViewHelper.NO_BG_DRAWABLE) {
+            ll.setBackground(bgDrawable);
+        }
+        if (bgRes != ViewHelper.NO_BG_RES) {
+            ll.setBackgroundResource(bgRes);
+        }
+
         if (weightSum > 0) {
             ll.setWeightSum(weightSum);
         }
 
+        ll.setVisibility(visibale);
         return ll;
     }
 }
