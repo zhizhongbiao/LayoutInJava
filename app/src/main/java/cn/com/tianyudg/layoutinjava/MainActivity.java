@@ -12,10 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.com.tianyudg.layoutinjava.helper.basic.UiUtil;
+import cn.com.tianyudg.layoutinjava.helper.basic.VHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewGroup contentView;
+    private int flId;
+    private int ivId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +26,30 @@ public class MainActivity extends AppCompatActivity {
         contentView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
         setContentView(contentView);
 //        test()
+        flId = VHelper.getViewId();
+        ivId = VHelper.getViewId();
 
         FrameLayout logoView = UiUtil.logoView(
                 this
-                ,contentView
-                ,200
-                ,200
+                , contentView
+                , flId
+                , ViewGroup.LayoutParams.MATCH_PARENT
+                , ViewGroup.LayoutParams.WRAP_CONTENT
+                , new int[]{20, 30, 40, 50}
+                , ivId
+                , 200
+                , 200
                 , Color.RED
                 , R.mipmap.ic_launcher_round
                 , new int[]{20, 30, 40, 50});
 
-//        Log.e("MianActivity", "ll/tv= "+ll.getId()+"/"+textView.getId());
+
+        ImageView iv = (ImageView) logoView.findViewById(ivId);
+        if (iv != null)
+            iv.setImageResource(R.mipmap.ic_launcher);
+
+
+//        Log.e("MianActivity", "ll/tv= " + logoView.getId() + "/" + flId);
     }
 
     private void test() {

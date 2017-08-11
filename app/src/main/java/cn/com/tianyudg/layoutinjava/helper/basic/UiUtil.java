@@ -17,20 +17,30 @@ import cn.com.tianyudg.layoutinjava.helper.viewgroup.FlHelper;
 public class UiUtil {
 
 
-    public static FrameLayout logoView(Context context, ViewGroup vg, int ivW, int ivH, int bgColor, int ivRes, int[] ivMargin) {
-        FrameLayout fl = FlHelper.getFl(context, bgColor);
-        vg.addView(fl, VHelper.getMlp(
-                vg
-                , fl
-                , FrameLayout.LayoutParams.MATCH_PARENT
-                , FrameLayout.LayoutParams.WRAP_CONTENT
-                , new int[]{20, 20, 20, 20}
-        ));
+    public static FrameLayout logoView(Context context, ViewGroup vg
+            , int flId, int flW, int flH, int[] flMargin
+            , int ivId, int ivW, int ivH, int bgColor, int ivRes, int[] ivMargin) {
 
-        ImageView iv = IvHelper.getIv(context, ivRes);
-        fl.addView(iv, VHelper.getMlp(fl,iv, ivW, ivH, ivMargin));
+        FrameLayout fl = FlHelper.getFl(context, flId, bgColor);
+        vg.addView(fl, VHelper.getMlp(vg, flW, flH, flMargin));
 
+        ImageView iv = IvHelper.getIv(context, ivId, ivRes);
+        fl.addView(iv, VHelper.getMlp(fl, ivW, ivH, ivMargin));
 
         return fl;
     }
+
+
+//    public static LinearLayout loginView(Context context, ViewGroup vg
+//            , int llId, int llW, int llH, int[] llMargin
+//            , int ivId, int ivW, int ivH, int bgColor, int ivRes, int[] ivMargin) {
+//
+//        LinearLayout ll = FlHelper.getFl(context, flId, bgColor);
+//        vg.addView(ll, VHelper.getMlp(vg, flW, flH, flMargin));
+//
+//        ImageView iv = IvHelper.getIv(context, ivId, ivRes);
+//        ll.addView(iv, VHelper.getMlp(ll, ivW, ivH, ivMargin));
+//
+//        return ll;
+//    }
 }

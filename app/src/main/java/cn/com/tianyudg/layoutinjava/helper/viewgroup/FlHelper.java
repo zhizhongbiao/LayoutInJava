@@ -17,33 +17,39 @@ import cn.com.tianyudg.layoutinjava.helper.basic.VHelper;
 public class FlHelper {
 
 
-    public static FrameLayout getFl(Context context) {
+    public static FrameLayout getFl(Context context , int id) {
 
         return getFl(context
+                ,id
                 , VHelper.DEFAULT_PADDING
                 , VHelper.NO_BG_COLOR);
     }
 
     public static FrameLayout getFl(Context context
+            , int id
             , int bgColor) {
 
         return getFl(context
+                ,id
                 , VHelper.DEFAULT_PADDING
                 , bgColor);
     }
 
 
     public static FrameLayout getFl(Context context
+            , int id
             , int[] paddings
             , int bgColor) {
 
         return getFl(context
+                ,id
                 , paddings
                 , View.VISIBLE
                 , bgColor, VHelper.NO_BG_RES, VHelper.NO_BG_DRAWABLE);
     }
 
     public static FrameLayout getFl(Context context
+            , int id
             , int[] paddings
             , int visibale
             , int bgColor, @DrawableRes int bgRes, Drawable bgDrawable) {
@@ -54,6 +60,7 @@ public class FlHelper {
         }
 
         FrameLayout fl = new FrameLayout(context);
+        fl.setId(id);
         fl.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
 
         if (bgColor != VHelper.NO_BG_COLOR) {

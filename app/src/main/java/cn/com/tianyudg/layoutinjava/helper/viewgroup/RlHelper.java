@@ -18,10 +18,11 @@ import cn.com.tianyudg.layoutinjava.helper.basic.VHelper;
 public class RlHelper {
 
 
-    public static RelativeLayout getRl(Context context) {
+    public static RelativeLayout getRl(Context context, int id) {
 
 
         return getRl(context
+                , id
                 , Gravity.NO_GRAVITY
                 , VHelper.DEFAULT_PADDING
                 , VHelper.NO_BG_COLOR);
@@ -29,12 +30,14 @@ public class RlHelper {
 
 
     public static RelativeLayout getRl(Context context
+            , int id
             , int gravity
             , int[] paddings
             , int bgColor) {
 
 
         return getRl(context
+                , id
                 , gravity
                 , paddings
                 , View.VISIBLE
@@ -42,6 +45,7 @@ public class RlHelper {
     }
 
     public static RelativeLayout getRl(Context context
+            , int id
             , int gravity
             , int[] paddings
             , int visibale
@@ -53,6 +57,7 @@ public class RlHelper {
         }
 
         RelativeLayout rl = new RelativeLayout(context);
+        rl.setId(id);
         rl.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
         rl.setGravity(gravity);
 

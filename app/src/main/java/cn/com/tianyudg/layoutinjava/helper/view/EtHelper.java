@@ -18,9 +18,11 @@ import cn.com.tianyudg.layoutinjava.helper.basic.VHelper;
 public class EtHelper {
 
     public static EditText getEt(Context context
+            , int id
             , String hint, float tvSize, int tvColor, int hintColor) {
 
         return getEt(context
+                , id
                 , hint, tvSize, tvColor, hintColor, -995
                 , Gravity.CENTER
                 , VHelper.DEFAULT_PADDING
@@ -29,11 +31,13 @@ public class EtHelper {
 
 
     public static EditText getEt(Context context
+            , int id
             , String hint, float tvSize, int tvColor, int hintColor, int inputType
             , int gravity
             , int[] paddings) {
 
         return getEt(context
+                , id
                 , hint, tvSize, tvColor, hintColor, inputType
                 , gravity
                 , paddings
@@ -42,12 +46,14 @@ public class EtHelper {
 
 
     public static EditText getEt(Context context
+            , int id
             , String hint, float tvSize, int tvColor, int hintColor, int inputType
             , int gravity
             , int[] paddings
             , int bgColor) {
 
         return getEt(context
+                , id
                 , hint, tvSize, tvColor, hintColor, inputType, false
                 , gravity
                 , paddings
@@ -57,6 +63,7 @@ public class EtHelper {
 
 
     public static EditText getEt(Context context
+            , int id
             , String hint, float tvSize, int tvColor, int hintColor, int inputType, boolean allCaps
             , int gravity
             , int[] paddings
@@ -69,6 +76,7 @@ public class EtHelper {
         }
 
         EditText et = new EditText(context);
+        et.setId(id);
         et.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
         et.setGravity(gravity);
 

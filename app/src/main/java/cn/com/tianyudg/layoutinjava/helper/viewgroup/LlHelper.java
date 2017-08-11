@@ -22,9 +22,11 @@ public class LlHelper {
 
 
     public static LinearLayout getLl(Context context
+            , int id
             , int orientation) {
 
         return getLl(context
+                , id
                 , Gravity.NO_GRAVITY, orientation
                 , VHelper.DEFAULT_PADDING
                 , NO_WEIGHT_SUM);
@@ -32,18 +34,22 @@ public class LlHelper {
 
 
     public static LinearLayout getLl(Context context
+            , int id
             , int gravity, int orientation) {
 
         return getLl(context
+                , id
                 , gravity, orientation
                 , VHelper.DEFAULT_PADDING
                 , NO_WEIGHT_SUM);
     }
 
     public static LinearLayout getLl(Context context
+            , int id
             , int gravity, int orientation, int bgColor) {
 
         return getLl(context
+                , id
                 , gravity, orientation
                 , VHelper.DEFAULT_PADDING
                 , null, 0, -1
@@ -54,11 +60,13 @@ public class LlHelper {
 
 
     public static LinearLayout getLl(Context context
+            , int id
             , int gravity, int orientation
             , int[] paddings
             , float weightSum) {
 
         return getLl(context
+                , id
                 , gravity, orientation
                 , paddings
                 , null, 0, -1
@@ -84,6 +92,7 @@ public class LlHelper {
      * @return
      */
     public static LinearLayout getLl(Context context
+            , int id
             , int gravity, int orientation
             , int[] paddings
             , Drawable dividerDrawable, int dividerPadding, int showDivider
@@ -97,6 +106,7 @@ public class LlHelper {
         }
 
         LinearLayout ll = new LinearLayout(context);
+        ll.setId(id);
         ll.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
         ll.setOrientation(orientation);
         ll.setGravity(gravity);

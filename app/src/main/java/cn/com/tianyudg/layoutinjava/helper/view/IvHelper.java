@@ -23,10 +23,11 @@ public class IvHelper {
 
 
     public static ImageView getIv(Context context
+            , int id
             , Bitmap bm) {
 
 
-        return getIv(context, NO_IMG_RES, bm, NO_IMG_DRAWABL, NO_IMG_SCALE_TYPE
+        return getIv(context, id, NO_IMG_RES, bm, NO_IMG_DRAWABL, NO_IMG_SCALE_TYPE
                 , VHelper.DEFAULT_PADDING
                 , View.VISIBLE
                 , VHelper.NO_BG_COLOR, VHelper.NO_BG_RES, VHelper.NO_BG_DRAWABLE);
@@ -34,18 +35,22 @@ public class IvHelper {
 
 
     public static ImageView getIv(Context context
+            , int id
             , int imgRes) {
 
-        return getIv(context, imgRes
+        return getIv(context
+                , id
+                , imgRes
                 , VHelper.DEFAULT_PADDING);
     }
 
 
     public static ImageView getIv(Context context
+            , int id
             , int imgRes, int[] paddings) {
 
 
-        return getIv(context, imgRes, NO_IMG_BITMAP, NO_IMG_DRAWABL, NO_IMG_SCALE_TYPE
+        return getIv(context, id, imgRes, NO_IMG_BITMAP, NO_IMG_DRAWABL, NO_IMG_SCALE_TYPE
                 , paddings
                 , View.VISIBLE
                 , VHelper.NO_BG_COLOR, VHelper.NO_BG_RES, VHelper.NO_BG_DRAWABLE);
@@ -53,6 +58,7 @@ public class IvHelper {
 
 
     public static ImageView getIv(Context context
+            , int id
             , int imgRes, Bitmap bm, Drawable imgDrawable, ImageView.ScaleType scaleType
             , int[] paddings
             , int visibale
@@ -64,7 +70,7 @@ public class IvHelper {
         }
 
         ImageView iv = new ImageView(context);
-
+        iv.setId(id);
         iv.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
 
         if (scaleType != NO_IMG_SCALE_TYPE) {

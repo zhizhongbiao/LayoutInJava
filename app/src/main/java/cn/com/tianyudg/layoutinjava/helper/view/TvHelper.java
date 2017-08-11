@@ -19,10 +19,12 @@ public class TvHelper {
 
 
     public static TextView getTv(Context context
+            , int id
             , String text, float tvSize, int tvColor) {
 
 
         return getTv(context
+                , id
                 , text, tvSize, tvColor, false
                 , Gravity.NO_GRAVITY
                 , VHelper.DEFAULT_PADDING
@@ -32,11 +34,13 @@ public class TvHelper {
 
 
     public static TextView getTv(Context context
+            , int id
             , String text, float tvSize, int tvColor
             , int[] paddings) {
 
 
         return getTv(context
+                , id
                 , text, tvSize, tvColor, false
                 , Gravity.NO_GRAVITY
                 , paddings
@@ -46,12 +50,14 @@ public class TvHelper {
 
 
     public static TextView getTv(Context context
+            , int id
             , String text, float tvSize, int tvColor
             , int gravity
             , int[] paddings) {
 
 
         return getTv(context
+                , id
                 , text, tvSize, tvColor, false
                 , gravity
                 , paddings
@@ -61,6 +67,7 @@ public class TvHelper {
 
 
     public static TextView getTv(Context context
+            , int id
             , String text, float tvSize, int tvColor, boolean allCaps
             , int gravity
             , int[] paddings
@@ -73,7 +80,7 @@ public class TvHelper {
         }
 
         TextView tv = new TextView(context);
-
+        tv.setId(id);
         tv.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
         tv.setGravity(gravity);
 

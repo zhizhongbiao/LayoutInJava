@@ -92,19 +92,15 @@ public class VHelper {
 
 
         if (vg instanceof LinearLayout) {
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width,height);
-
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, height);
             lp.setMargins(margins[0], margins[1], margins[2], margins[3]);
             lp.gravity = layoutGravity;
             lp.weight = llWeight;
             return lp;
 
         } else if (vg instanceof RelativeLayout) {
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(width,height);
-
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(width, height);
             lp.setMargins(margins[0], margins[1], margins[2], margins[3]);
-
-
             if (rlRule1 != NO_RL_RULE1) {
                 for (Integer verb : rlRule1) {
                     lp.addRule(verb);
@@ -122,7 +118,7 @@ public class VHelper {
             }
             return lp;
         } else if (vg instanceof FrameLayout) {
-            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(width,height);
+            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(width, height);
             lp.setMargins(margins[0], margins[1], margins[2], margins[3]);
             lp.gravity = layoutGravity;
             return lp;
@@ -132,72 +128,6 @@ public class VHelper {
             return mlp;
         }
     }
-
-
-//       public static ViewGroup.MarginLayoutParams getMlp(View view
-//            , int width, int height
-//            , int[] margins
-//            , int layoutGravity, int llWeight
-//            , List<Integer> rlRule1
-//            , Map<Integer, Integer> rlRule2) {
-//
-//        if (view == null) {
-//            throw new WrongParameterException("View@view can not be null");
-//        }
-//
-//        if (margins == null || margins.length < 4) {
-//            throw new WrongParameterException("You should give a nonull int[]@margins whose length is 4 at least");
-//        }
-//        ViewParent parent = view.getParent();
-//
-//        if (parent instanceof LinearLayout) {
-//            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) view.getLayoutParams();
-//            lp.width = width;
-//            lp.height = height;
-//            lp.setMargins(margins[0], margins[1], margins[2], margins[3]);
-//            lp.gravity = layoutGravity;
-//            lp.weight = llWeight;
-//            return lp;
-//
-//        } else if (parent instanceof RelativeLayout) {
-//            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) view.getLayoutParams();
-//            lp.width = width;
-//            lp.height = height;
-//            lp.setMargins(margins[0], margins[1], margins[2], margins[3]);
-//
-//
-//            if (rlRule1 != NO_RL_RULE1) {
-//                for (Integer verb : rlRule1) {
-//                    lp.addRule(verb);
-//                }
-//            }
-//
-//            if (rlRule2 != NO_RL_RULE2) {
-//                Iterator<Integer> iterator = rlRule2.keySet().iterator();
-//                while (iterator.hasNext()) {
-//                    Integer verb = iterator.next();
-//                    Integer relativeId = rlRule2.get(verb);
-//                    lp.addRule(verb, relativeId);
-//                    Log.e(TAG, "verb/relativeId=" + verb + "/" + relativeId);
-//                }
-//            }
-//
-//            return lp;
-//        } else if (parent instanceof FrameLayout) {
-//            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) view.getLayoutParams();
-//            lp.width = width;
-//            lp.height = height;
-//            lp.setMargins(margins[0], margins[1], margins[2], margins[3]);
-//            lp.gravity = layoutGravity;
-//            return lp;
-//        } else if (parent instanceof ViewGroup) {
-//            ViewGroup.MarginLayoutParams mlp = new ViewGroup.MarginLayoutParams(width, height);
-//            mlp.setMargins(margins[0], margins[1], margins[2], margins[3]);
-//            return mlp;
-//        } else {
-//            throw new IllegalStateException("Not support ViewParent@parent type");
-//        }
-//    }
 
 
     public static int getViewId() {

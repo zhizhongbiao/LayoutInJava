@@ -19,11 +19,13 @@ public class BtnHelper {
 
 
     public static Button getBtn(Context context
+            , int id
             , String text, float tvSize, int tvColor
 
             , int bgColor) {
 
         return getBtn(context
+                , id
                 , text, tvSize, tvColor, false
                 , Gravity.CENTER
                 , VHelper.DEFAULT_PADDING
@@ -32,11 +34,13 @@ public class BtnHelper {
     }
 
     public static Button getBtn(Context context
+            , int id
             , String text, float tvSize, int tvColor
             , int[] paddings
             , int bgColor) {
 
         return getBtn(context
+                , id
                 , text, tvSize, tvColor, false
                 , Gravity.CENTER
                 , paddings
@@ -46,6 +50,7 @@ public class BtnHelper {
 
 
     public static Button getBtn(Context context
+            , int id
             , String text, float tvSize, int tvColor, boolean allCaps
             , int gravity
             , int[] paddings
@@ -58,6 +63,7 @@ public class BtnHelper {
         }
 
         Button btn = new Button(context);
+        btn.setId(id);
         btn.setPadding(paddings[0], paddings[1], paddings[2], paddings[3]);
         btn.setGravity(gravity);
 
