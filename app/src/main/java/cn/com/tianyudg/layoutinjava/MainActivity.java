@@ -4,18 +4,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import cn.com.tianyudg.layoutinjava.helper.basic.ViewHelper;
-import cn.com.tianyudg.layoutinjava.helper.view.TextViewHelper;
-import cn.com.tianyudg.layoutinjava.helper.viewgroup.LinearLayoutHelper;
+import cn.com.tianyudg.layoutinjava.helper.basic.UiUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,15 +22,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         contentView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
         setContentView(contentView);
+//        test()
 
-//        test();
+        FrameLayout logoView = UiUtil.logoView(
+                this
+                ,contentView
+                ,200
+                ,200
+                , Color.RED
+                , R.mipmap.ic_launcher_round
+                , new int[]{20, 30, 40, 50});
 
-        LinearLayout ll = LinearLayoutHelper.getLinearLayout(this, Gravity.CENTER, LinearLayout.VERTICAL);
-
-        ll.addView(TextViewHelper.getTextView(this,30,30,"jjjjj",24f, Color.RED,false,Gravity.CENTER
-                ,Gravity.CENTER,new int[]{0,0,0,0},new int[]{0,0,0,0}, View.VISIBLE, ViewHelper.NO_BG_COLOR,ViewHelper.NO_BG_RES,ViewHelper.NO_BG_DRAWABLE));
-        contentView.addView(ll);
-
+//        Log.e("MianActivity", "ll/tv= "+ll.getId()+"/"+textView.getId());
     }
 
     private void test() {
@@ -44,16 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView imageView = new ImageView(this);
         RelativeLayout.LayoutParams image_Params = new RelativeLayout.LayoutParams(dip2px(60), dip2px(60));
-        image_Params.setMargins(dip2px(20), dip2px(25), 0, dip2px(10));
+        image_Params.setMargins(dip2px(20), dip2px(25), 0, dip2px(20));
         imageView.setLayoutParams(image_Params);
         imageView.setImageResource(R.mipmap.ic_launcher_round);
 //        imageView.setId(1);
 
         TextView text_Name = new TextView(this);
-        RelativeLayout.LayoutParams text_Name_Params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams text_Name_Params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         text_Name_Params.addRule(RelativeLayout.RIGHT_OF, imageView.getId());
         text_Name_Params.addRule(RelativeLayout.ALIGN_TOP, imageView.getId());
-        text_Name_Params.setMargins(dip2px(20), dip2px(10), 0, 0);
+        text_Name_Params.setMargins(dip2px(20), dip2px(20), 0, 0);
         text_Name.setLayoutParams(text_Name_Params);
         text_Name.setText("Mr.Zdy");
         text_Name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView text_Email = new TextView(this);
-        RelativeLayout.LayoutParams text_Email_Params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams text_Email_Params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         text_Email_Params.addRule(RelativeLayout.RIGHT_OF, imageView.getId());
         text_Email_Params.addRule(RelativeLayout.BELOW, text_Name.getId());
         text_Email_Params.setMargins(dip2px(20), dip2px(3), 0, 0);
@@ -81,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
         final float scale = this.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
-
-
 
 
 }
