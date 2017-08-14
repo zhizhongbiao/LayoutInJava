@@ -1,13 +1,12 @@
 package cn.com.tianyudg.layoutinjava;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,37 +15,43 @@ import cn.com.tianyudg.layoutinjava.helper.basic.VHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ViewGroup contentView;
+    private ViewGroup containerView;
     private int flId;
     private int ivId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        contentView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
-        setContentView(contentView);
+        containerView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
+        setContentView(containerView);
 //        test()
-        flId = VHelper.getViewId();
-        ivId = VHelper.getViewId();
+//        flId = VHelper.getViewId();
+//        ivId = VHelper.getViewId();
+//
+//        FrameLayout logoView = UiUtil.logoView(
+//                this
+//                , containerView
+//                , flId
+//                , ViewGroup.LayoutParams.MATCH_PARENT
+//                , ViewGroup.LayoutParams.WRAP_CONTENT
+//                , new int[]{20, 30, 40, 50}
+//                , ivId
+//                , 200
+//                , 200
+//                , Color.RED
+//                , R.mipmap.ic_launcher_round
+//                , new int[]{20, 30, 40, 50});
+//
+//
+//        ImageView iv = (ImageView) logoView.findViewById(ivId);
+//        if (iv != null)
+//            iv.setImageResource(R.mipmap.ic_launcher);
 
-        FrameLayout logoView = UiUtil.logoView(
-                this
-                , contentView
-                , flId
-                , ViewGroup.LayoutParams.MATCH_PARENT
-                , ViewGroup.LayoutParams.WRAP_CONTENT
-                , new int[]{20, 30, 40, 50}
-                , ivId
-                , 200
-                , 200
-                , Color.RED
-                , R.mipmap.ic_launcher_round
-                , new int[]{20, 30, 40, 50});
 
-
-        ImageView iv = (ImageView) logoView.findViewById(ivId);
-        if (iv != null)
-            iv.setImageResource(R.mipmap.ic_launcher);
+        int etId = VHelper.getViewId();
+        int etId2 = VHelper.getViewId();
+        LinearLayout llRoot = UiUtil.editView(this, containerView, etId, "客户姓名", "李白");
+//        LinearLayout llRoot2 = UiUtil.editView(this, containerView, etId2, "联系电话", "15453454113");
 
 
 //        Log.e("MianActivity", "ll/tv= " + logoView.getId() + "/" + flId);

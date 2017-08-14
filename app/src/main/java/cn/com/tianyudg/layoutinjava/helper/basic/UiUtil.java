@@ -1,12 +1,20 @@
 package cn.com.tianyudg.layoutinjava.helper.basic;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import cn.com.tianyudg.layoutinjava.helper.view.EtHelper;
 import cn.com.tianyudg.layoutinjava.helper.view.IvHelper;
+import cn.com.tianyudg.layoutinjava.helper.view.TvHelper;
 import cn.com.tianyudg.layoutinjava.helper.viewgroup.FlHelper;
+import cn.com.tianyudg.layoutinjava.helper.viewgroup.LlHelper;
 
 /**
  * Author : WaterFlower.
@@ -31,16 +39,31 @@ public class UiUtil {
     }
 
 
-//    public static LinearLayout loginView(Context context, ViewGroup vg
-//            , int llId, int llW, int llH, int[] llMargin
-//            , int ivId, int ivW, int ivH, int bgColor, int ivRes, int[] ivMargin) {
-//
-//        LinearLayout ll = FlHelper.getFl(context, flId, bgColor);
-//        vg.addView(ll, VHelper.getMlp(vg, flW, flH, flMargin));
-//
-//        ImageView iv = IvHelper.getIv(context, ivId, ivRes);
-//        ll.addView(iv, VHelper.getMlp(ll, ivW, ivH, ivMargin));
-//
-//        return ll;
-//    }
+    public static LinearLayout editView(Context context, ViewGroup vg, int etId, String tvText, String etHint) {
+
+
+        LinearLayout llRoot = LlHelper.getLl(context, VHelper.getViewId(), LinearLayout.VERTICAL);
+        vg.addView(llRoot);
+
+
+        LinearLayout ll = LlHelper.getLl(context, VHelper.getViewId(), LinearLayout.HORIZONTAL);
+        llRoot.addView(ll);
+
+        TextView tv = TvHelper.getTv(context, VHelper.getViewId(), tvText, 26, Color.parseColor("#333333"));
+        ll.addView(tv, VHelper.getMlp(ll, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
+                ,new int[]{40,40,40,40} ));
+
+        View view = new View(context);
+        view.setBackgroundColor(Color.parseColor("#ebebeb"));
+//        view.setBackgroundColor(Color.parseColor("#ff0000"));
+        ll.addView(view,new LinearLayout.LayoutParams(10,LinearLayout.LayoutParams.MATCH_PARENT));
+
+        EditText et = EtHelper.getEt(context, etId, etHint, 26, Color.parseColor("#999999"), Color.parseColor("#999999"));
+        ll.addView(et,VHelper.getMlp(ll,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,new int[]{40,40,40,40}));
+
+
+        return ll;
+    }
+
+
 }
