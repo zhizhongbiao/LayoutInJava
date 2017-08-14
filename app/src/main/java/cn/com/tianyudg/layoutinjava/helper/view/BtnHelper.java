@@ -68,7 +68,7 @@ public class BtnHelper {
         btn.setGravity(gravity);
 
         btn.setAllCaps(allCaps);
-        btn.setTextSize(tvSize);
+        btn.setTextSize(VHelper.px2sp(context,tvSize));
         btn.setTextColor(tvColor);
         btn.setText(text);
 

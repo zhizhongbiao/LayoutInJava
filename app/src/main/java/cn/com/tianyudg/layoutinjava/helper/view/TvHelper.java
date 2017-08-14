@@ -85,7 +85,7 @@ public class TvHelper {
         tv.setGravity(gravity);
 
         tv.setAllCaps(allCaps);
-        tv.setTextSize(tvSize);
+        tv.setTextSize(VHelper.px2sp(context,tvSize));
         tv.setTextColor(tvColor);
         tv.setText(text);
 

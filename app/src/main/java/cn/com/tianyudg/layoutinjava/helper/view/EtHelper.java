@@ -81,7 +81,7 @@ public class EtHelper {
         et.setGravity(gravity);
 
         et.setAllCaps(allCaps);
-        et.setTextSize(tvSize);
+        et.setTextSize(VHelper.px2sp(context,tvSize));
         et.setTextColor(tvColor);
 
         et.setHint(hint);

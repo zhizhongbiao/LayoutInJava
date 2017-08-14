@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -15,14 +14,14 @@ import cn.com.tianyudg.layoutinjava.helper.basic.VHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ViewGroup containerView;
+    private LinearLayout containerView;
     private int flId;
     private int ivId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        containerView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
+        containerView = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.activity_main, null, false);
         setContentView(containerView);
 //        test()
 //        flId = VHelper.getViewId();
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         int etId = VHelper.getViewId();
         int etId2 = VHelper.getViewId();
         LinearLayout llRoot = UiUtil.editView(this, containerView, etId, "客户姓名", "李白");
-//        LinearLayout llRoot2 = UiUtil.editView(this, containerView, etId2, "联系电话", "15453454113");
+        LinearLayout llRoot2 = UiUtil.editView(this, containerView, etId2, "联系电话", "15453454113");
 
 
 //        Log.e("MianActivity", "ll/tv= " + logoView.getId() + "/" + flId);
